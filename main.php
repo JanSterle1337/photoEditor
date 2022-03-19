@@ -643,7 +643,7 @@
 
     } */
 
-    function xRightSobelMoj(imgData) {
+    function yRightSobelMoj(imgData) {
         let kopija = mojArr;
         console.log(mojArr);
         let t = 2000;
@@ -751,6 +751,668 @@
         ctx.putImageData(imgData, 0, 0);
 
     }
+
+    function yLeftSobelMoj(imgData) {
+        let kopija = mojArr;
+        console.log(mojArr);
+        let t = 2000;
+        for (let i = 1; i < 700; i++) {
+            
+            for (let j = 1; j <500; j++) {
+              
+                    
+                    //console.log(kopija);
+                    //console.log(kopija[i-1][j-1][k]);
+                   
+                        try {
+
+                        let sestevek = parseInt(kopija[i-1][j-1][0],10) * -1 + 
+                                       parseInt(kopija[i-1][j][0],10) * 0 + 
+                                       parseInt(kopija[i-1][j+1][0],10) * 1 + 
+                                       parseInt(kopija[i][j-1][0],10) * -2 +  
+                                       parseInt(kopija[i][j][0],10) * (0) + 
+                                       parseInt(kopija[i][j+1][0],10) * 2 + 
+                                       parseInt(kopija[i+1][j-1][0],10) * -1 + 
+                                       parseInt(kopija[i+1][j][0],10)  * 0 + 
+                                       parseInt(kopija[i+1][j+1][0],10) * 1;
+
+                        if (sestevek > 255) {
+                            imgData.data[t] = 255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = 0;
+                        } else {
+                            imgData.data[t] = sestevek;
+                        }
+
+                        
+                        
+                        } catch {
+
+                        }
+                        t++;
+
+                        try {
+                        let sestevek = parseInt(kopija[i-1][j-1][1],10) * -1 + 
+                                       parseInt(kopija[i-1][j][1],10) * 0 + 
+                                       parseInt(kopija[i-1][j+1][1],10) * 1 + 
+                                       parseInt(kopija[i][j-1][1],10) * -2 +  
+                                       parseInt(kopija[i][j][1],10) * (0) + 
+                                       parseInt(kopija[i][j+1][1],10) * 2 + 
+                                       parseInt(kopija[i+1][j-1][1],10) * -1 + 
+                                       parseInt(kopija[i+1][j][1],10)  * 0 + 
+                                       parseInt(kopija[i+1][j+1][1],10) * 1;
+                        
+                        if (sestevek > 255) {
+                            imgData.data[t] = 255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = 0;
+                        } else {
+                            imgData.data[t] = sestevek;
+                        }
+                        
+                        
+                        } catch {
+
+                        }
+                        t++;
+
+                        try {
+                        sestevek =     parseInt(kopija[i-1][j-1][2],10) * -1 + 
+                                       parseInt(kopija[i-1][j][2],10) * 0 + 
+                                       parseInt(kopija[i-1][j+1][2],10) * 1 + 
+                                       parseInt(kopija[i][j-1][2],10) * -2 +  
+                                       parseInt(kopija[i][j][2],10) * (0) + 
+                                       parseInt(kopija[i][j+1][2],10) * 2 + 
+                                       parseInt(kopija[i+1][j-1][2],10) * -1 + 
+                                       parseInt(kopija[i+1][j][2],10)  * 0 + 
+                                       parseInt(kopija[i+1][j+1][2],10) * 1;
+                        
+
+                        if (sestevek > 255) {
+                            imgData.data[t] = 255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = 0;
+                        } else {
+                            imgData.data[t] = sestevek;
+                        }
+                        
+                        //let sestevek2 = parseInt(kopija[i-1][j-1][k],10) + parseInt(kopija[i-1][j][k],10);
+                        //console.log(sestevek);
+                        } catch {
+
+                        }
+
+                        t++;
+                        t++;
+                        
+                   
+     
+
+                    
+                   // console.log(sestevek);
+                    //imgData.data[t] = sestevek / 9;
+                
+               
+                    
+            }
+            t+=4;
+        }
+        ctx.putImageData(imgData, 0, 0);
+
+    }
+
+    function xBottomSobel(imgData) {
+        let kopija = mojArr;
+        console.log(mojArr);
+        let t = 2000;
+        for (let i = 1; i < 700; i++) {
+            
+            for (let j = 1; j <500; j++) {
+              
+                    
+                    //console.log(kopija);
+                    //console.log(kopija[i-1][j-1][k]);
+                   
+                        try {
+
+                        let sestevek = parseInt(kopija[i-1][j-1][0],10) * 1 + 
+                                       parseInt(kopija[i-1][j][0],10) * 2 + 
+                                       parseInt(kopija[i-1][j+1][0],10) * 1 + 
+                                       parseInt(kopija[i][j-1][0],10) * 0 +  
+                                       parseInt(kopija[i][j][0],10) * 0 + 
+                                       parseInt(kopija[i][j+1][0],10) * 0 + 
+                                       parseInt(kopija[i+1][j-1][0],10) * -1 + 
+                                       parseInt(kopija[i+1][j][0],10)  * -2 + 
+                                       parseInt(kopija[i+1][j+1][0],10) * -1;
+
+                        if (sestevek > 255) {
+                            imgData.data[t] = 255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = 0;
+                        } else {
+                            imgData.data[t] = sestevek;
+                        }
+
+                        
+                        
+                        } catch {
+
+                        }
+                        t++;
+
+                        try {
+                        let sestevek = parseInt(kopija[i-1][j-1][1],10) * 1 + 
+                                       parseInt(kopija[i-1][j][1],10) * 2 + 
+                                       parseInt(kopija[i-1][j+1][1],10) * 1 + 
+                                       parseInt(kopija[i][j-1][1],10) * 0 +  
+                                       parseInt(kopija[i][j][1],10) * 0 + 
+                                       parseInt(kopija[i][j+1][1],10) * 0 + 
+                                       parseInt(kopija[i+1][j-1][1],10) * -1 + 
+                                       parseInt(kopija[i+1][j][1],10)  * -2 + 
+                                       parseInt(kopija[i+1][j+1][1],10) * -1;
+                        
+                        if (sestevek > 255) {
+                            imgData.data[t] = 255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = 0;
+                        } else {
+                            imgData.data[t] = sestevek;
+                        }
+                        
+                        
+                        } catch {
+
+                        }
+                        t++;
+
+                        try {
+                        sestevek =     parseInt(kopija[i-1][j-1][2],10) * 1 + 
+                                       parseInt(kopija[i-1][j][2],10) * 2 + 
+                                       parseInt(kopija[i-1][j+1][2],10) * 1 + 
+                                       parseInt(kopija[i][j-1][2],10) * 0 +  
+                                       parseInt(kopija[i][j][2],10) * 0 + 
+                                       parseInt(kopija[i][j+1][2],10) * 0 + 
+                                       parseInt(kopija[i+1][j-1][2],10) * -1 + 
+                                       parseInt(kopija[i+1][j][2],10)  * -2 + 
+                                       parseInt(kopija[i+1][j+1][2],10) * -1;
+                        
+
+                        if (sestevek > 255) {
+                            imgData.data[t] = 255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = 0;
+                        } else {
+                            imgData.data[t] = sestevek;
+                        }
+                        
+                        //let sestevek2 = parseInt(kopija[i-1][j-1][k],10) + parseInt(kopija[i-1][j][k],10);
+                        //console.log(sestevek);
+                        } catch {
+
+                        }
+
+                        t++;
+                        t++;
+                        
+                   
+     
+
+                    
+                   // console.log(sestevek);
+                    //imgData.data[t] = sestevek / 9;
+                
+               
+                    
+            }
+            t+=4;
+        }
+        ctx.putImageData(imgData, 0, 0);
+
+    }
+
+    function xTopSobel(imgData) {
+        let kopija = mojArr;
+        console.log(mojArr);
+        let t = 2000;
+        for (let i = 1; i < 700; i++) {
+            
+            for (let j = 1; j <500; j++) {
+              
+                    
+                    //console.log(kopija);
+                    //console.log(kopija[i-1][j-1][k]);
+                   
+                        try {
+
+                        let sestevek = parseInt(kopija[i-1][j-1][0],10) * -1 + 
+                                       parseInt(kopija[i-1][j][0],10) * -2 + 
+                                       parseInt(kopija[i-1][j+1][0],10) * -1 + 
+                                       parseInt(kopija[i][j-1][0],10) * 0 +  
+                                       parseInt(kopija[i][j][0],10) * 0 + 
+                                       parseInt(kopija[i][j+1][0],10) * 0 + 
+                                       parseInt(kopija[i+1][j-1][0],10) * 1 + 
+                                       parseInt(kopija[i+1][j][0],10)  * 2 + 
+                                       parseInt(kopija[i+1][j+1][0],10) * 1;
+
+                        if (sestevek > 255) {
+                            imgData.data[t] = 255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = 0;
+                        } else {
+                            imgData.data[t] = sestevek;
+                        }
+
+                        
+                        
+                        } catch {
+
+                        }
+                        t++;
+
+                        try {
+                        let sestevek = parseInt(kopija[i-1][j-1][1],10) * -1 + 
+                                       parseInt(kopija[i-1][j][1],10) * -2 + 
+                                       parseInt(kopija[i-1][j+1][1],10) * -1 + 
+                                       parseInt(kopija[i][j-1][1],10) * 0 +  
+                                       parseInt(kopija[i][j][1],10) * 0 + 
+                                       parseInt(kopija[i][j+1][1],10) * 0 + 
+                                       parseInt(kopija[i+1][j-1][1],10) * 1 + 
+                                       parseInt(kopija[i+1][j][1],10)  * 2 + 
+                                       parseInt(kopija[i+1][j+1][1],10) * 1;
+                        
+                        if (sestevek > 255) {
+                            imgData.data[t] = 255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = 0;
+                        } else {
+                            imgData.data[t] = sestevek;
+                        }
+                        
+                        
+                        } catch {
+
+                        }
+                        t++;
+
+                        try {
+                        sestevek =     parseInt(kopija[i-1][j-1][2],10) * -1 +     
+                                       parseInt(kopija[i-1][j][2],10) * -2 + 
+                                       parseInt(kopija[i-1][j+1][2],10) * -1 + 
+                                       parseInt(kopija[i][j-1][2],10) * 0 +  
+                                       parseInt(kopija[i][j][2],10) * 0 + 
+                                       parseInt(kopija[i][j+1][2],10) * 0 + 
+                                       parseInt(kopija[i+1][j-1][2],10) * 1 + 
+                                       parseInt(kopija[i+1][j][2],10)  * 2 + 
+                                       parseInt(kopija[i+1][j+1][2],10) * 1;
+                        
+
+                        if (sestevek > 255) {
+                            imgData.data[t] = 255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = 0;
+                        } else {
+                            imgData.data[t] = sestevek;
+                        }
+                        
+                        //let sestevek2 = parseInt(kopija[i-1][j-1][k],10) + parseInt(kopija[i-1][j][k],10);
+                        //console.log(sestevek);
+                        } catch {
+
+                        }
+
+                        t++;
+                        t++;
+                        
+                   
+     
+
+                    
+                   // console.log(sestevek);
+                    //imgData.data[t] = sestevek / 9;
+                
+               
+                    
+            }
+            t+=4;
+        }
+        ctx.putImageData(imgData, 0, 0);
+
+    }
+
+    function medianinFilter(mojArr) {
+       
+       let kopija = mojArr;
+       console.log(mojArr);
+       let t = 2000;
+       for (let i = 1; i < 700; i++) {
+           
+           for (let j = 1; j <500; j++) {
+             
+                   
+                   //console.log(kopija);
+                   //console.log(kopija[i-1][j-1][k]);
+                  
+                       try {
+
+
+                       let filterValues = [
+                        parseInt(kopija[i-1][j+1][0],10), 
+                        parseInt(kopija[i][j+1][0],10),
+                        parseInt(kopija[i+1][j+1][0],10), 
+                        parseInt(kopija[i-1][j][0],10), 
+                        parseInt(kopija[i][j][0],10), 
+                        parseInt(kopija[i+1][j][0],10), 
+                        parseInt(kopija[i-1][j-1][0],10), 
+                        parseInt(kopija[i][j-1][0],10),
+                        parseInt(kopija[i+1][j-1][0],10)
+                       ];
+
+                       imgData.data[t] = medianin(filterValues);
+
+                       
+
+                       
+                       
+                       } catch {
+
+                       }
+                       t++;
+
+                       try {
+
+                        filterValues = [
+                        parseInt(kopija[i-1][j+1][1],10), 
+                        parseInt(kopija[i][j+1][1],10),
+                        parseInt(kopija[i+1][j+1][1],10), 
+                        parseInt(kopija[i-1][j][1],10), 
+                        parseInt(kopija[i][j][1],10), 
+                        parseInt(kopija[i+1][j][1],10), 
+                        parseInt(kopija[i-1][j-1][1],10), 
+                        parseInt(kopija[i][j-1][1],10),
+                        parseInt(kopija[i+1][j-1][1],10)
+                       ];
+
+                       imgData.data[t] = medianin(filterValues);
+                       
+                      
+                       
+                       
+                       } catch {
+
+                       }
+                       t++;
+
+                       try {
+                       
+                        filterValues = [
+                        parseInt(kopija[i-1][j+1][2],10), 
+                        parseInt(kopija[i][j+1][2],10),
+                        parseInt(kopija[i+1][j+1][2],10), 
+                        parseInt(kopija[i-1][j][2],10), 
+                        parseInt(kopija[i][j][2],10), 
+                        parseInt(kopija[i+1][j][2],10), 
+                        parseInt(kopija[i-1][j-1][2],10), 
+                        parseInt(kopija[i][j-1][2],10),
+                        parseInt(kopija[i+1][j-1][2],10)
+                       ];
+
+                       imgData.data[t] = medianin(filterValues);
+                       
+                       //let sestevek2 = parseInt(kopija[i-1][j-1][k],10) + parseInt(kopija[i-1][j][k],10);
+                       //console.log(sestevek);
+                       } catch {
+
+                       }
+
+                       t++;
+                       t++;
+                       
+                  
+    
+
+                   
+                  // console.log(sestevek);
+                   //imgData.data[t] = sestevek / 9;
+               
+              
+                   
+           }
+           t+=4;
+       }
+       ctx.putImageData(imgData, 0, 0);
+   }
+
+
+   function sharpening(imgData) {
+        let kopija = mojArr;
+        console.log(mojArr);
+        let t = 2000;
+        for (let i = 1; i < 700; i++) {
+            
+            for (let j = 1; j <500; j++) {
+              
+                    
+                    //console.log(kopija);
+                    //console.log(kopija[i-1][j-1][k]);
+                   
+                        try {
+
+                        let sestevek = parseInt(kopija[i-1][j+1][0],10) * 0 + 
+                                       parseInt(kopija[i][j+1][0],10) * 1 + 
+                                       parseInt(kopija[i+1][j+1][0],10) * 0 + 
+                                       parseInt(kopija[i-1][j][0],10) * 1 +  
+                                       parseInt(kopija[i][j][0],10) * (-4) + 
+                                       parseInt(kopija[i+1][j][0],10) * 1 + 
+                                       parseInt(kopija[i-1][j-1][0],10) * 0 + 
+                                       parseInt(kopija[i][j-1][0],10)  * 1 + 
+                                       parseInt(kopija[i+1][j-1][0],10) * 0;
+
+                        if (sestevek > 255) {
+                            imgData.data[t] = imgData.data[t]-255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = imgData.data[t];
+                        } else {
+                            imgData.data[t] = imgData.data[t]-sestevek;
+                        }
+
+                        
+                        
+                        } catch {
+
+                        }
+                        t++;
+
+                        try {
+                        let sestevek = parseInt(kopija[i-1][j+1][1],10) * 0 + 
+                                       parseInt(kopija[i][j+1][1],10) * 1 + 
+                                       parseInt(kopija[i+1][j+1][1],10) * 0 + 
+                                       parseInt(kopija[i-1][j][1],10) * 1 +  
+                                       parseInt(kopija[i][j][1],10) * (-4) + 
+                                       parseInt(kopija[i+1][j][1],10) * 1 + 
+                                       parseInt(kopija[i-1][j-1][1],10) * 0 + 
+                                       parseInt(kopija[i][j-1][1],10)  * 1 + 
+                                       parseInt(kopija[i+1][j-1][1],10) * 0;
+                        
+                        if (sestevek > 255) {
+                            imgData.data[t] = imgData.data[t]-255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = imgData.data[t];
+                        } else {
+                            imgData.data[t] = imgData.data[t]-sestevek;
+                        }
+                        
+                        
+                        } catch {
+
+                        }
+                        t++;
+
+                        try {
+                        sestevek = parseInt(kopija[i-1][j+1][2],10) * 0 + 
+                                   parseInt(kopija[i][j+1][2],10) * 1 + 
+                                   parseInt(kopija[i+1][j+1][2],10) * 0 + 
+                                   parseInt(kopija[i-1][j][2],10) * 1 +  
+                                   parseInt(kopija[i][j][2],10) * (-4) + 
+                                   parseInt(kopija[i+1][j][2],10) * 1 + 
+                                   parseInt(kopija[i-1][j-1][2],10) * 0 + 
+                                   parseInt(kopija[i][j-1][2],10)  * 1 + 
+                                   parseInt(kopija[i+1][j-1][2],10) * 0;
+                        
+
+                        if (sestevek > 255) {
+                            imgData.data[t] = imgData.data[t]-255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = imgData.data[t];
+                        } else {
+                            imgData.data[t] = imgData.data[t]-sestevek;
+                        }
+                        
+                        //let sestevek2 = parseInt(kopija[i-1][j-1][k],10) + parseInt(kopija[i-1][j][k],10);
+                        //console.log(sestevek);
+                        } catch {
+
+                        }
+
+                        t++;
+                        t++;
+                        
+                   
+     
+
+                    
+                   // console.log(sestevek);
+                    //imgData.data[t] = sestevek / 9;
+                
+               
+                    
+            }
+            t+=4;
+        }
+        ctx.putImageData(imgData, 0, 0);
+   }
+
+    function unsharpMasking(imgData) {
+        let kopija = mojArr;
+        console.log(mojArr);
+        let t = 2000;
+        for (let i = 1; i < 700; i++) {
+            
+            for (let j = 1; j <500; j++) {
+              
+                    
+                    //console.log(kopija);
+                    //console.log(kopija[i-1][j-1][k]);
+                   
+                        try {
+
+                        let sestevek = parseInt(kopija[i-1][j+1][0],10) * 0 + 
+                                       parseInt(kopija[i][j+1][0],10) * -1 + 
+                                       parseInt(kopija[i+1][j+1][0],10) * 0 + 
+                                       parseInt(kopija[i-1][j][0],10) * -1 +  
+                                       parseInt(kopija[i][j][0],10) * (5) + 
+                                       parseInt(kopija[i+1][j][0],10) * -1 + 
+                                       parseInt(kopija[i-1][j-1][0],10) * 0 + 
+                                       parseInt(kopija[i][j-1][0],10)  * -1 + 
+                                       parseInt(kopija[i+1][j-1][0],10) * 0;
+
+                        if (sestevek > 255) {
+                            imgData.data[t] = 255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = 0;
+                        } else {
+                            imgData.data[t] = sestevek;
+                        }
+
+                        
+                        
+                        } catch {
+
+                        }
+                        t++;
+
+                        try {
+                        let sestevek = parseInt(kopija[i-1][j+1][1],10) * 0 + 
+                                       parseInt(kopija[i][j+1][1],10) * -1 + 
+                                       parseInt(kopija[i+1][j+1][1],10) * 0 + 
+                                       parseInt(kopija[i-1][j][1],10) * -1 +  
+                                       parseInt(kopija[i][j][1],10) * (5) + 
+                                       parseInt(kopija[i+1][j][1],10) * -1 + 
+                                       parseInt(kopija[i-1][j-1][1],10) * 0 + 
+                                       parseInt(kopija[i][j-1][1],10)  * -1 + 
+                                       parseInt(kopija[i+1][j-1][1],10) * 0;
+                        
+                        if (sestevek > 255) {
+                            imgData.data[t] = 255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = 0;
+                        } else {
+                            imgData.data[t] = sestevek;
+                        }
+                        
+                        
+                        } catch {
+
+                        }
+                        t++;
+
+                        try {
+                        sestevek = parseInt(kopija[i-1][j+1][2],10) * 0 + 
+                                   parseInt(kopija[i][j+1][2],10) * -1 + 
+                                   parseInt(kopija[i+1][j+1][2],10) * 0 + 
+                                   parseInt(kopija[i-1][j][2],10) * -1 +  
+                                   parseInt(kopija[i][j][2],10) * (5) + 
+                                   parseInt(kopija[i+1][j][2],10) * -1 + 
+                                   parseInt(kopija[i-1][j-1][2],10) * 0 + 
+                                   parseInt(kopija[i][j-1][2],10)  * -1 + 
+                                   parseInt(kopija[i+1][j-1][2],10) * 0;
+                        
+
+                        if (sestevek > 255) {
+                            imgData.data[t] = 255;
+                        } else if (sestevek < 0) {
+                            imgData.data[t] = 0;
+                        } else {
+                            imgData.data[t] = sestevek;
+                        }
+                        
+                        //let sestevek2 = parseInt(kopija[i-1][j-1][k],10) + parseInt(kopija[i-1][j][k],10);
+                        //console.log(sestevek);
+                        } catch {
+
+                        }
+
+                        t++;
+                        t++;
+                        
+                   
+     
+
+                    
+                   // console.log(sestevek);
+                    //imgData.data[t] = sestevek / 9;
+                
+               
+                    
+            }
+            t+=4;
+        }
+        ctx.putImageData(imgData, 0, 0);
+    }
+
+
+
+
+
+    function medianin(arrElementov) {
+        const sorted = arrElementov.slice().sort((a,b) => a - b);
+        const middle = Math.floor(sorted.length / 2);
+
+        if (sorted.length % 2 === 0) {
+            return (sorted[middle-1] + sorted[middle] / 2);
+        }
+        return sorted[middle];
+    }
+
       
     neki(imgData);
  
@@ -760,8 +1422,13 @@
     //boxFilter(mojArr);
     //boxFilterAdvanced(imgData);
     //laplaceov(imgData); 
-    xRightSobelMoj(imgData);
-    xLeftSobelMoj(imgData);
+    //yRightSobelMoj(imgData);
+    //yLeftSobelMoj(imgData);
+    //xBottomSobel(imgData);
+    //xTopSobel(imgData);
+    //medianinFilter(imgData);
+    //sharpening(imgData);
+    //unsharpMasking(imgData);
     }
     
     </script>
