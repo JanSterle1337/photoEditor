@@ -4,34 +4,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/photoEditor.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>PHOTO EDITOR</title>
     
 </head>
 <body>
-        
-            <img id="scream" src="assets/tom-jerry.jpg" alt="The Scream" width="500" height="700">
-            <img id="scream2" src="assets/selfie.jpg" alt="The Scream 2" style="display: none;" width="500" height="700">
-            <canvas id="myCanvas" width="500" height="700" style="border:1px solid #d3d3d3;"></canvas>
+        <div class="editor-wrapper">
+            <div class="edited-photos-wrapper">
+                <img id="scream" src="./assets/tom-jerry.jpg" alt="The Scream" width="500" height="700">
+                <canvas id="myCanvas" width="500" height="700" style="border:1px solid #d3d3d3;"></canvas>
+            </div>
             
-            
+            <div class="options">
+                <button onclick="changeFilters()">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path d="M0 168v-16c0-13.255 10.745-24 24-24h360V80c0-21.367 25.899-32.042 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.956 271.982 384 261.456 384 240v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.314-25.862-32.08-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.057 463.997 128 453.437 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z"></path></svg>
+                </button>
+                <button onclick="backToOriginal(imgData,originalData,dataStack,changesCounter)">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M18.537 19.567A9.961 9.961 0 0 1 12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10c0 2.136-.67 4.116-1.81 5.74L17 12h3a8 8 0 1 0-2.46 5.772l.997 1.795z"></path></g></svg>
+                </button>
+                <button onclick="razlika(imgData,dataStack,changesCounter)" class="simpleFilters">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm192 472c0 4.4-3.6 8-8 8H328c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h368c4.4 0 8 3.6 8 8v48z"></path></svg>
+                </button>
+                <button onclick="brighten(imgData,originalData,dataStack,changesCounter)" class="simpleFilters">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 11a3 3 0 100-6 3 3 0 000 6zm0 1a4 4 0 100-8 4 4 0 000 8zM8 0a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2A.5.5 0 018 0zm0 13a.5.5 0 01.5.5v2a.5.5 0 01-1 0v-2A.5.5 0 018 13zm8-5a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2a.5.5 0 01.5.5zM3 8a.5.5 0 01-.5.5h-2a.5.5 0 010-1h2A.5.5 0 013 8zm10.657-5.657a.5.5 0 010 .707l-1.414 1.415a.5.5 0 11-.707-.708l1.414-1.414a.5.5 0 01.707 0zm-9.193 9.193a.5.5 0 010 .707L3.05 13.657a.5.5 0 01-.707-.707l1.414-1.414a.5.5 0 01.707 0zm9.193 2.121a.5.5 0 01-.707 0l-1.414-1.414a.5.5 0 01.707-.707l1.414 1.414a.5.5 0 010 .707zM4.464 4.465a.5.5 0 01-.707 0L2.343 3.05a.5.5 0 11.707-.707l1.414 1.414a.5.5 0 010 .708z" clip-rule="evenodd"></path></svg>
+                </button>
+                <button onclick="darken(imgData,originalData,dataStack,changesCounter)" class="simpleFilters">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 11a3 3 0 100-6 3 3 0 000 6zm0 1a4 4 0 100-8 4 4 0 000 8z" clip-rule="evenodd"></path><circle cx="8" cy="2.5" r=".5"></circle><circle cx="8" cy="13.5" r=".5"></circle><circle cx="13.5" cy="8" r=".5" transform="rotate(90 13.5 8)"></circle><circle cx="2.5" cy="8" r=".5" transform="rotate(90 2.5 8)"></circle><circle cx="11.889" cy="4.111" r=".5" transform="rotate(45 11.89 4.11)"></circle><circle cx="4.111" cy="11.889" r=".5" transform="rotate(45 4.11 11.89)"></circle><circle cx="11.889" cy="11.889" r=".5" transform="rotate(135 11.89 11.889)"></circle><circle cx="4.111" cy="4.111" r=".5" transform="rotate(135 4.11 4.11)"></circle></svg>
+                </button>
+                <button onclick="grayscale(imgData,dataStack,changesCounter)" class="simpleFilters" id="grayscale">
+                    <svg stroke="currentColor" fill="darkgray" stroke-width="0" viewBox="0 0 512 512" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path d="M136.5 77.7l37 67L32 285.7 216.4 464l152.4-148.6 54.4-11.4L166.4 48l-29.9 29.7zm184 208H114.9l102.8-102.3 102.8 102.3zM423.3 304s-56.7 61.5-56.7 92.1c0 30.7 25.4 55.5 56.7 55.5 31.3 0 56.7-24.9 56.7-55.5S423.3 304 423.3 304z"></path></svg>
+                <div class="gray-circle"></div>
+                </button>
+                <button onclick="thresholding(imgData,dataStack,changesCounter)" class="simpleFilters">
+                    <img src="./assets/blacknwhite.PNG" class="photo-as-logo"/>
+                </button>
+                <button onclick="moreRed(imgData,dataStack,changesCounter)" class="simpleFilters">
+                    <svg stroke="currentColor" fill="red" stroke-width="0" viewBox="0 0 512 512" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path d="M136.5 77.7l37 67L32 285.7 216.4 464l152.4-148.6 54.4-11.4L166.4 48l-29.9 29.7zm184 208H114.9l102.8-102.3 102.8 102.3zM423.3 304s-56.7 61.5-56.7 92.1c0 30.7 25.4 55.5 56.7 55.5 31.3 0 56.7-24.9 56.7-55.5S423.3 304 423.3 304z"></path></svg>
+                </button>
+                <button onclick="moreGreen(imgData,dataStack,changesCounter)" class="simpleFilters">
+                <svg stroke="currentColor" fill="lightgreen" stroke-width="0" viewBox="0 0 512 512" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path d="M136.5 77.7l37 67L32 285.7 216.4 464l152.4-148.6 54.4-11.4L166.4 48l-29.9 29.7zm184 208H114.9l102.8-102.3 102.8 102.3zM423.3 304s-56.7 61.5-56.7 92.1c0 30.7 25.4 55.5 56.7 55.5 31.3 0 56.7-24.9 56.7-55.5S423.3 304 423.3 304z"></path></svg>
+                </button> 
+                <button onclick="moreBlue(imgData,dataStack,changesCounter)" class="simpleFilters">
+                <svg stroke="currentColor" fill="lightblue" stroke-width="0" viewBox="0 0 512 512" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path d="M136.5 77.7l37 67L32 285.7 216.4 464l152.4-148.6 54.4-11.4L166.4 48l-29.9 29.7zm184 208H114.9l102.8-102.3 102.8 102.3zM423.3 304s-56.7 61.5-56.7 92.1c0 30.7 25.4 55.5 56.7 55.5 31.3 0 56.7-24.9 56.7-55.5S423.3 304 423.3 304z"></path></svg>
+                </button> 
+                <button onclick="unDoChanges(imgData,dataStack,changesCounter)">Undo</button>
+                
+                <button onclick="boxFilter()" class="complexFilters">box filter</button>
+            </div>
+
             <div style="display: flex; width: 500px; height: 500epx;">
-            <canvas id="myChart" width="200" height="200"></canvas>
+                <canvas id="myChart" width="200" height="200"></canvas>
             </div>
 
             <div style="display: flex; width: 500px; height: 500px;">
-            <canvas id="myChartLine" width="200" height="200"></canvas>
+                <canvas id="myChartLine" width="200" height="200"></canvas>
             </div>
+        </div>
 
         <script src="./js/main.js"></script>
-        <script src="neki.js"></script>
+        <script src="./js/filters.js"></script>
 </body>
 <script>
-
+    /*
         let img = document.getElementById('scream');
         let img2 = document.getElementById('scream2');
         let canvas = document.getElementById('myCanvas');
-        let ctx = canvas.getContext('2d');
+        let ctx = canvas.getContext('2d'); */
 
 
         
@@ -40,7 +79,7 @@
        
 
 
-
+/*
     img.onload = function () {
 
 
@@ -695,7 +734,7 @@
         ctx.putImageData(imgData, 0, 0);
 
     } */
-
+/*
     function yRightSobelMoj(imgData) {
         let kopija = mojArr;
         console.log(mojArr);
@@ -1701,7 +1740,7 @@
 
 
 };
-
+ */
     
 
 
