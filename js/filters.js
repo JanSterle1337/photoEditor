@@ -13,7 +13,9 @@ function backToOriginal(imgData,originalData,dataStack,changesCounter) {
 
 
 
-function razlika(imgData,dataStack,changesCounter) {
+function razlika(mojArr,imgData,dataStack,changesCounter) {
+    imgData = ctx.getImageData(0, 0, 500, 700);
+    mojArr = pretvorba(imgData);
     console.log(imgData);
     
     for (let i = 0; i < imgData.data.length; i +=4) {
@@ -25,13 +27,15 @@ function razlika(imgData,dataStack,changesCounter) {
     }
     changesCounter++;
     dataStack.push(imgData);
-    ctx.putImageData(imgData, 0, 0); 
+    mojArr = pretvorba(imgData);
+    ctx.putImageData(imgData, 0, 0);
 }
 
 
 function brighten(imgData,originalData,dataStack,changesCounter) {
     
-       
+        imgData = ctx.getImageData(0, 0, 500, 700);
+        mojArr = pretvorba(imgData);
         let brightness = 1.3;
         imgData.data = originalData.data;
 
@@ -159,6 +163,7 @@ function moreBlue(imgData,dataStack,changesCounter) {
 
 function thresholding(imgData,dataStack,changesCounter) {
     for (let i = 0; i < imgData.data.length; i +=4) {
+    
     let avg = (imgData.data[i] + imgData.data[i+1] + imgData.data[i+2]) / 3;
         if (avg < 100) {
             imgData.data[i] = 0;
@@ -174,18 +179,38 @@ function thresholding(imgData,dataStack,changesCounter) {
     changesCounter++;
     console.log("DATASTACK:");
     console.log(dataStack);
+    console.log(dataStack[changesCounter-1].data[2]);
     ctx.putImageData(imgData, 0, 0);
 }
 
 
 function unDoChanges(imgData,dataStack,changesCounter) {
+    /*
+    let disableButton = document.getElementById("undo");
+    if (disableButton.disabled === false) {
+        disableButton.disabled = true;
+    } */
+
+    if (dataStack.length < 2) return; 
+
+
+
+    console.log(dataStack[0].data[1000]);
+    let length = dataStack.length;
+    
     for (let i = 0; i < imgData.data.length; i +=4) {
-        imgData.data[i] = dataStack[changesCounter-1].data[i];
-        imgData.data[i+1] = dataStack[changesCounter-1].data[i+1];
-        imgData.data[i+2] = dataStack[changesCounter-1].data[i+2];
-    }
+        
+
+        imgData.data[i] = dataStack[length-2].data[i];  
+        imgData.data[i+1] = dataStack[length-2].data[i+1];
+        imgData.data[i+2] = dataStack[length-2].data[i+2];
+    } 
+    ctx.putImageData(imgData, 0, 0);
     dataStack.pop();
     changesCounter--;
+    
+        //disableButton.disabled = !disableButton.disabled;
+    
 }
 
 

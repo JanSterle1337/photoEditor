@@ -23,7 +23,7 @@
                 <button onclick="backToOriginal(imgData,originalData,dataStack,changesCounter)">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M18.537 19.567A9.961 9.961 0 0 1 12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10c0 2.136-.67 4.116-1.81 5.74L17 12h3a8 8 0 1 0-2.46 5.772l.997 1.795z"></path></g></svg>
                 </button>
-                <button onclick="razlika(imgData,dataStack,changesCounter)" class="simpleFilters">
+                <button onclick="razlika(mojArr,imgData,dataStack,changesCounter)" class="simpleFilters">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm192 472c0 4.4-3.6 8-8 8H328c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h368c4.4 0 8 3.6 8 8v48z"></path></svg>
                 </button>
                 <button onclick="brighten(imgData,originalData,dataStack,changesCounter)" class="simpleFilters">
@@ -48,9 +48,10 @@
                 <button onclick="moreBlue(imgData,dataStack,changesCounter)" class="simpleFilters">
                 <svg stroke="currentColor" fill="lightblue" stroke-width="0" viewBox="0 0 512 512" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path d="M136.5 77.7l37 67L32 285.7 216.4 464l152.4-148.6 54.4-11.4L166.4 48l-29.9 29.7zm184 208H114.9l102.8-102.3 102.8 102.3zM423.3 304s-56.7 61.5-56.7 92.1c0 30.7 25.4 55.5 56.7 55.5 31.3 0 56.7-24.9 56.7-55.5S423.3 304 423.3 304z"></path></svg>
                 </button> 
-                <button onclick="unDoChanges(imgData,dataStack,changesCounter)">Undo</button>
+                <button onclick="unDoChanges(imgData,dataStack,changesCounter)" id="undo">Undo</button>
                 
-                <button onclick="boxFilter()" class="complexFilters">box filter</button>
+                <button onclick="boxFilter(imgData,mojArr)" class="complexFilters">box filter</button>
+                <button  class="complexFilters">box filterrff</button>
             </div>
 
             <div style="display: flex; width: 500px; height: 500epx;">
@@ -64,6 +65,7 @@
 
         <script src="./js/main.js"></script>
         <script src="./js/filters.js"></script>
+        <script src="./js/advancedFilters.js"></script>
 </body>
 <script>
     /*
@@ -189,7 +191,7 @@
 
     
 
-
+/*
     function pretvorba(imgData) {
 
         let x = 220;
@@ -205,7 +207,7 @@
                 k++;
             }
         }
-*/
+
         let arr2D = new Array(700);
         let t = 0;
         for (let i = 0; i < 700; i++) {
@@ -230,7 +232,7 @@
                 }
             }
         }
-        */
+        
 
         console.log("Moj 2d array je: ", arr2D);
         return arr2D;
@@ -339,7 +341,7 @@
         ctx.putImageData(imgData, 0, 0);
     }
 
-
+*/
     function boxFilterAdvanced(imgData) {
         let kopija = mojArr;
         console.log(mojArr);
