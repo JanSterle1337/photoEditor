@@ -51,7 +51,16 @@
                 <button onclick="unDoChanges(imgData,dataStack,changesCounter)" id="undo">Undo</button>
                 
                 <button onclick="boxFilter(imgData,mojArr)" class="complexFilters">box filter</button>
-                <button  class="complexFilters">box filterrff</button>
+                <button onclick="boxFilterAdvanced(imgData,mojArr)"  class="complexFilters">box filter advanced</button>
+                <button onclick="laplaceov(imgData,mojArr)"  class="complexFilters">Laplaceov</button>
+                <button onclick="xRightSobel(imgData,mojArr)" class="complexFilters">x-right-sobel</button>
+                <button onclick="yRightSobelMoj(imgData,mojArr)" class="complexFilters">y-right-sobel</button>
+                <button onclick="yLeftSobelMoj(imgData,mojArr)" class="complexFilters">y-left-sobel</button>
+                <button onclick="xBottomSobel(imgData,mojArr)" class="complexFilters">x-bottom-sobel</button>
+                <button onclick="xTopSobel(imgData,mojArr)" class="complexFilters">x-top-sobel</button>
+                <button onclick="sharpening(imgData,mojArr)" class="complexFilters">Sharpening</button>
+                <button onclick=" unsharpMasking(imgData,mojArr)" class="complexFilters">Sharpening</button>
+
             </div>
 
             <div style="display: flex; width: 500px; height: 500epx;">
@@ -341,7 +350,7 @@
         ctx.putImageData(imgData, 0, 0);
     }
 
-*/
+*//*
     function boxFilterAdvanced(imgData) {
         let kopija = mojArr;
         console.log(mojArr);
@@ -398,7 +407,7 @@
 
                                        parseInt(kopija[i-1][j-1][0],10) + 
                                        parseInt(kopija[i][j-1][0],10) + 
-                                       parseInt(kopija[i+1][j-1][0],10); */
+                                       parseInt(kopija[i+1][j-1][0],10); 
 
                         if (sestevek / 25 > 255) {
                             imgData.data[t] = 255;
@@ -517,8 +526,8 @@
         ctx.putImageData(imgData, 0, 0);
     }
 
-
-    function laplaceov(imgData) {
+*/
+/*    function laplaceov(imgData) {
         let kopija = mojArr;
         console.log(mojArr);
         let t = 2000;
@@ -627,7 +636,7 @@
 
     }
 
-
+*/
     /*function xRightSobel(imgData) {
         let kopija = mojArr;
         console.log(mojArr);

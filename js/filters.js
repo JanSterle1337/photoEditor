@@ -70,7 +70,8 @@ function brighten(imgData,originalData,dataStack,changesCounter) {
 
 function darken(imgData,originalData,dataStack,changesCounter) {
     
-       
+    imgData = ctx.getImageData(0, 0, 500, 700);
+    mojArr = pretvorba(imgData);  
     let brightness = 0.7;
     imgData.data = originalData.data;
 
@@ -104,6 +105,8 @@ function darken(imgData,originalData,dataStack,changesCounter) {
 
 
 function grayscale(imgData,dataStack,changesCounter) {
+    imgData = ctx.getImageData(0, 0, 500, 700);
+    mojArr = pretvorba(imgData);
     for (let i = 0; i < imgData.data.length; i +=4) {
     let avg = imgData.data[i] + imgData.data[i+1] + imgData.data[i+2];
     imgData.data[i] = avg / 3;
@@ -118,6 +121,8 @@ function grayscale(imgData,dataStack,changesCounter) {
 
 
 function moreRed(imgData,dataStack,changesCounter) {
+    imgData = ctx.getImageData(0, 0, 500, 700);
+    mojArr = pretvorba(imgData);
     for (let i = 0; i < imgData.data.length; i +=4) {
         if (imgData.data[i] + 30 >= 255) {
             imgData.data[i] = 255;
@@ -133,6 +138,8 @@ function moreRed(imgData,dataStack,changesCounter) {
 
 
 function moreGreen(imgData,dataStack,changesCounter) {
+    imgData = ctx.getImageData(0, 0, 500, 700);
+    mojArr = pretvorba(imgData);
     for (let i = 0; i < imgData.data.length; i +=4) {
         if (imgData.data[i+1] + 30 >= 255) {
             imgData.data[i+1] = 255;
@@ -147,6 +154,8 @@ function moreGreen(imgData,dataStack,changesCounter) {
 
 
 function moreBlue(imgData,dataStack,changesCounter) {
+    imgData = ctx.getImageData(0, 0, 500, 700);
+    mojArr = pretvorba(imgData);
     for (let i = 0; i < imgData.data.length; i +=4) {
         if (imgData.data[i+2] + 30 >= 255) {
             imgData.data[i+2] = 255;
@@ -162,6 +171,8 @@ function moreBlue(imgData,dataStack,changesCounter) {
 
 
 function thresholding(imgData,dataStack,changesCounter) {
+    imgData = ctx.getImageData(0, 0, 500, 700);
+    mojArr = pretvorba(imgData);
     for (let i = 0; i < imgData.data.length; i +=4) {
     
     let avg = (imgData.data[i] + imgData.data[i+1] + imgData.data[i+2]) / 3;
