@@ -10,17 +10,19 @@
     
 </head>
 <body>
+   
         <div class="editor-wrapper">
+            
             <div class="edited-photos-wrapper">
                 <img id="scream" src="./assets/tom-jerry.jpg" alt="The Scream" width="500" height="700">
                 <canvas id="myCanvas" width="500" height="700" style="border:1px solid #d3d3d3;"></canvas>
             </div>
             
             <div class="options">
-                <button onclick="changeFilters()">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path d="M0 168v-16c0-13.255 10.745-24 24-24h360V80c0-21.367 25.899-32.042 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.956 271.982 384 261.456 384 240v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.314-25.862-32.08-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.057 463.997 128 453.437 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z"></path></svg>
+                <button onclick="changeFilters()" class="special-operations">
+                    <svg stroke="currentColor" fill="gray" stroke-width="0" viewBox="0 0 512 512" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path d="M0 168v-16c0-13.255 10.745-24 24-24h360V80c0-21.367 25.899-32.042 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.956 271.982 384 261.456 384 240v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.314-25.862-32.08-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.057 463.997 128 453.437 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z"></path></svg>
                 </button>
-                <button onclick="backToOriginal(imgData,originalData,dataStack,changesCounter)">
+                <button onclick="backToOriginal(imgData,originalData,dataStack,changesCounter)" class="simpleFilters">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M18.537 19.567A9.961 9.961 0 0 1 12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10c0 2.136-.67 4.116-1.81 5.74L17 12h3a8 8 0 1 0-2.46 5.772l.997 1.795z"></path></g></svg>
                 </button>
                 <button onclick="razlika(mojArr,imgData,dataStack,changesCounter)" class="simpleFilters">
@@ -48,11 +50,11 @@
                 <button onclick="moreBlue(imgData,dataStack,changesCounter)" class="simpleFilters">
                 <svg stroke="currentColor" fill="lightblue" stroke-width="0" viewBox="0 0 512 512" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path d="M136.5 77.7l37 67L32 285.7 216.4 464l152.4-148.6 54.4-11.4L166.4 48l-29.9 29.7zm184 208H114.9l102.8-102.3 102.8 102.3zM423.3 304s-56.7 61.5-56.7 92.1c0 30.7 25.4 55.5 56.7 55.5 31.3 0 56.7-24.9 56.7-55.5S423.3 304 423.3 304z"></path></svg>
                 </button> 
-                <button onclick="unDoChanges(imgData,dataStack,changesCounter)" id="undo">Undo</button>
                 
-                <button onclick="boxFilter(imgData,mojArr)" class="complexFilters">box filter</button>
+                
+                <button onclick="boxFilter(imgData,mojArr); secondFunc();" class="complexFilters">box filter</button>
                 <button onclick="boxFilterAdvanced(imgData,mojArr)"  class="complexFilters">box filter advanced</button>
-                <button onclick="laplaceov(imgData,mojArr)"  class="complexFilters">Laplaceov</button>
+                <button onclick="laplaceov(imgData,mojArr)"  class="complexFilters">laplaceov</button>
                 <button onclick="xRightSobel(imgData,mojArr)" class="complexFilters">x-right-sobel</button>
                 <button onclick="yRightSobelMoj(imgData,mojArr)" class="complexFilters">y-right-sobel</button>
                 <button onclick="yLeftSobelMoj(imgData,mojArr)" class="complexFilters">y-left-sobel</button>
@@ -60,21 +62,46 @@
                 <button onclick="xTopSobel(imgData,mojArr)" class="complexFilters">x-top-sobel</button>
                 <button onclick="sharpening(imgData,mojArr)" class="complexFilters">Sharpening</button>
                 <button onclick=" unsharpMasking(imgData,mojArr)" class="complexFilters">Sharpening</button>
-
+                <button onclick="unDoChanges(imgData,dataStack,changesCounter)" id="undo" class="special-operations">
+                <svg stroke="currentColor" fill="gray" stroke-width="0" viewBox="0 0 512 512" height="3em" width="3em" xmlns="http://www.w3.org/2000/svg"><path d="M212.333 224.333H12c-6.627 0-12-5.373-12-12V12C0 5.373 5.373 0 12 0h48c6.627 0 12 5.373 12 12v78.112C117.773 39.279 184.26 7.47 258.175 8.007c136.906.994 246.448 111.623 246.157 248.532C504.041 393.258 393.12 504 256.333 504c-64.089 0-122.496-24.313-166.51-64.215-5.099-4.622-5.334-12.554-.467-17.42l33.967-33.967c4.474-4.474 11.662-4.717 16.401-.525C170.76 415.336 211.58 432 256.333 432c97.268 0 176-78.716 176-176 0-97.267-78.716-176-176-176-58.496 0-110.28 28.476-142.274 72.333h98.274c6.627 0 12 5.373 12 12v48c0 6.627-5.373 12-12 12z"></path></svg>
+                </button>
             </div>
+            <div class="all-histogram-wrapper">
+                <div class="histogram-original-wrapper">
 
-            <div style="display: flex; width: 500px; height: 500epx;">
-                <canvas id="myChart" width="200" height="200"></canvas>
-            </div>
+                    <div class="histogram-header">
+                        <h1>Original</h1>
+                    </div>
 
-            <div style="display: flex; width: 500px; height: 500px;">
-                <canvas id="myChartLine" width="200" height="200"></canvas>
+                    <div style="display: flex; width: 300px; height: 300px;">
+                        <canvas id="myChart" width="100" height="100"></canvas>
+                    </div>
+
+                    <div style="display: flex; width: 300px; height: 300px;">
+                        <canvas id="myChartLine" width="100" height="100"></canvas>
+                    </div>
+                </diV>
+                <div class="histogram-edited-wrapper">
+
+                    <div class="histogram-header">
+                        <h1>Edited</h1>
+                    </div>
+
+                    <div style="display: flex; width: 300px; height: 300px;">
+                        <canvas id="myChartEdited" width="100" height="100"></canvas>
+                    </div>
+
+                    <div style="display: flex; width: 300px; height: 300px;">
+                        <canvas id="myChartLineEdited" width="100" height="100"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
 
         <script src="./js/main.js"></script>
         <script src="./js/filters.js"></script>
         <script src="./js/advancedFilters.js"></script>
+        <script src="./js/histogram.js"></script>
 </body>
 <script>
     /*
@@ -95,11 +122,7 @@
 
 
         
-        let chartCanvas = document.getElementById('myChart');
-        let chartCtx = chartCanvas.getContext('2d');
-
-        let chartLineCanvas = document.getElementById('myChartLine');
-        let chartLineCtx = chartLineCanvas.getContext('2d');
+        
         
        
         ctx.drawImage(img,0,0,500,700);

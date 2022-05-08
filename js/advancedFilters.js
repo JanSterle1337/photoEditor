@@ -100,6 +100,9 @@ function boxFilter(imgData,mojArr) {
         t+=4;
     }
     ctx.putImageData(imgData, 0, 0);
+    changesCounter++;
+    dataStack.push(imgData);
+    FreshData.newDataRefresh();
 }
 
 
@@ -279,6 +282,7 @@ function boxFilterAdvanced(imgData,mojArr) {
         t+=4;
     }
     ctx.putImageData(imgData, 0, 0);
+    FreshData.newDataRefresh();
 }
 
 function laplaceov(imgData,mojArr) {
@@ -389,6 +393,7 @@ function laplaceov(imgData,mojArr) {
         t+=4;
     }
     ctx.putImageData(imgData, 0, 0);
+    FreshData.newDataRefresh();
 
 }
 
@@ -501,6 +506,7 @@ function xRightSobel(imgData,mojArr) {
         t+=4;
     }
     ctx.putImageData(imgData, 0, 0);
+    FreshData.newDataRefresh();
 
 }
 
@@ -613,6 +619,7 @@ function yRightSobelMoj(imgData,mojArr) {
         t+=4;
     }
     ctx.putImageData(imgData, 0, 0);
+    FreshData.newDataRefresh();
 
 }
 
@@ -725,6 +732,7 @@ function yLeftSobelMoj(imgData,mojArr) {
         t+=4;
     }
     ctx.putImageData(imgData, 0, 0);
+    FreshData.newDataRefresh();
 
 }
 
@@ -836,6 +844,7 @@ function xBottomSobel(imgData,mojArr) {
         t+=4;
     }
     ctx.putImageData(imgData, 0, 0);
+    FreshData.newDataRefresh();
 
 }
 
@@ -948,6 +957,7 @@ function xTopSobel(imgData,mojArr) {
         t+=4;
     }
     ctx.putImageData(imgData, 0, 0);
+    FreshData.newDataRefresh();
 
 }
 
@@ -1060,6 +1070,7 @@ function sharpening(imgData,mojArr) {
         t+=4;
     }
     ctx.putImageData(imgData, 0, 0);
+    FreshData.newDataRefresh();
 }
 
 
@@ -1171,4 +1182,5 @@ function unsharpMasking(imgData,mojArr) {
         t+=4;
     }
     ctx.putImageData(imgData, 0, 0);
+    FreshData.newDataRefresh();
 }
